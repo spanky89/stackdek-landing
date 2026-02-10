@@ -1,355 +1,209 @@
 import { useState } from 'react'
 
 const features = [
-  {
-    icon: '📋',
-    title: 'Job Stack',
-    desc: "See every job lined up for the day, drag to reprioritize, and never miss a stop. Your crew knows exactly what's next.",
-  },
-  {
-    icon: '⚡',
-    title: 'Quick Quotes',
-    desc: 'Build and send professional quotes in under 60 seconds — right from the field. Close deals before the lead goes cold.',
-  },
-  {
-    icon: '👥',
-    title: 'Client Management',
-    desc: 'Every client, property, and job history in one place. No more digging through texts and spreadsheets.',
-  },
-  {
-    icon: '📊',
-    title: 'Revenue Tracking',
-    desc: 'See exactly how much you quoted, invoiced, and earned. Know your numbers at a glance.',
-  },
+  { icon: '📋', title: 'Digital Stack', desc: 'Your jobs, lined up the way you think about them. Not a calendar — a stack. Top of the pile gets done first.' },
+  { icon: '🔄', title: 'Flexible Flow', desc: 'Rain delay? Emergency call? Just drag and reorder. Your day adapts to reality, not the other way around.' },
+  { icon: '📝', title: 'Simple Quotes', desc: 'Build a quote in 60 seconds from the truck. Send it before you pull out of the driveway.' },
+  { icon: '📊', title: 'Lead Tracker', desc: 'Know who called, who you quoted, and who ghosted. Follow up at the right time, every time.' },
+  { icon: '📱', title: 'Mobile & Offline', desc: "Works on your phone. Works without signal. Because you're on a roof, not at a desk." },
+  { icon: '💰', title: 'Affordable Forever', desc: "No per-seat fees. No premium tiers. One price that stays low — because contractors shouldn't need an MBA to afford software." },
+]
+
+const painPoints = [
+  { icon: '💸', text: 'Pricing bloat — $50/month turns into $200 once you add your crew' },
+  { icon: '🔒', text: 'Paywalls everywhere — basic features locked behind "Pro" plans' },
+  { icon: '🤯', text: 'Overly complex — built for enterprise, not a 5-person roofing crew' },
+  { icon: '🖥️', text: "Desktop-first — useless when you're standing in a customer's yard" },
+  { icon: '📢', text: 'Too much noise — dashboards full of stuff you never asked for' },
 ]
 
 const testimonials = [
-  {
-    name: 'Marcus H.',
-    title: 'Landscaping Owner',
-    text: 'I was managing jobs in my notes app. StackDek let me fire my admin assistant and still organize everything better.',
-    avatar: '🧑‍💼',
-  },
-  {
-    name: 'Sarah L.',
-    title: 'Cleaning Service',
-    text: 'Quotes that took 30 minutes now take 3. Plus I actually track which customers are profitable.',
-    avatar: '👩‍💼',
-  },
-  {
-    name: 'James T.',
-    title: 'Plumbing Contractor',
-    text: 'My crew loves it. They know exactly what job is next without calling me. Revenue went up 20%.',
-    avatar: '👨‍💼',
-  },
+  { name: 'Mike R.', trade: 'Roofing Contractor', text: 'Finally a CRM that matches how I actually run my roofing jobs. Stack it, do it, next.', avatar: '🏗️' },
+  { name: 'Carlos D.', trade: 'Landscaping Owner', text: 'I was juggling three apps and a notebook. StackDek replaced all of it from my phone.', avatar: '🌿' },
+  { name: 'Lisa M.', trade: 'Cleaning Service', text: 'My quotes used to take 20 minutes. Now I send them before I leave the walkthrough.', avatar: '✨' },
+  { name: 'James W.', trade: 'HVAC Technician', text: 'The offline mode is a game-changer. Half my jobs are in basements with zero signal.', avatar: '❄️' },
 ]
 
-function DashboardMockup() {
-  const jobs = [
-    { client: 'Martinez Residence', type: 'Weekly Mow', time: '8:00 AM', status: 'In Progress', color: 'bg-yellow-400' },
-    { client: 'Oakwood Office Park', type: 'Full Service', time: '10:30 AM', status: 'Scheduled', color: 'bg-blue-500' },
-    { client: 'Chen Property', type: 'Hedge Trim', time: '1:00 PM', status: 'Scheduled', color: 'bg-blue-500' },
-    { client: 'Riverdale HOA', type: 'Leaf Cleanup', time: '3:00 PM', status: 'Quoted', color: 'bg-neutral-300' },
-  ]
+const trades = [
+  'Roofing', 'Landscaping', 'Cleaning', 'Plumbing', 'HVAC', 'Electrical',
+  'Painting', 'Flooring', 'General Contracting', 'Pest Control', 'Other',
+]
+
+function SignUpForm() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', trade: '', headache: '' })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!form.email || !form.name) return
+    setSubmitted(true)
+    setTimeout(() => setSubmitted(false), 5000)
+    setForm({ name: '', email: '', phone: '', trade: '', headache: '' })
+  }
+
+  if (submitted) {
+    return (
+      <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
+        <div className="text-5xl mb-4">🎉</div>
+        <h3 className="text-2xl font-bold text-green-800 mb-2">You're on the list!</h3>
+        <p className="text-green-700">We'll reach out soon with early access details.</p>
+      </div>
+    )
+  }
 
   return (
-    <div className="bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden max-w-lg w-full">
-      {/* Title bar */}
-      <div className="bg-neutral-900 px-5 py-3 flex items-center justify-between">
-        <span className="text-white font-bold text-sm tracking-wide">Today's Stack</span>
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-          <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
-        </div>
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto text-left">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <input name="name" required value={form.name} onChange={handleChange} placeholder="Your Name *" className="w-full px-5 py-4 rounded-xl border border-neutral-300 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 text-base" />
+        <input name="email" type="email" required value={form.email} onChange={handleChange} placeholder="Email *" className="w-full px-5 py-4 rounded-xl border border-neutral-300 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 text-base" />
       </div>
-      {/* Stats row */}
-      <div className="grid grid-cols-3 gap-3 p-4 bg-neutral-50 border-b border-neutral-200">
-        {[['12', 'Jobs'], ['$4,280', 'Quoted'], ['$18k', 'Revenue']].map(([val, label]) => (
-          <div key={label} className="text-center">
-            <div className="text-xl font-bold text-neutral-900">{val}</div>
-            <div className="text-xs text-neutral-500">{label}</div>
-          </div>
-        ))}
+      <div className="grid sm:grid-cols-2 gap-4">
+        <input name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="Phone (optional)" className="w-full px-5 py-4 rounded-xl border border-neutral-300 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 text-base" />
+        <select name="trade" value={form.trade} onChange={handleChange} className="w-full px-5 py-4 rounded-xl border border-neutral-300 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 text-base appearance-none bg-white">
+          <option value="">Trade / Business Type</option>
+          {trades.map(t => <option key={t} value={t}>{t}</option>)}
+        </select>
       </div>
-      {/* Job list */}
-      <div className="p-4 space-y-2.5">
-        <div className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1">Today</div>
-        {jobs.map((j) => (
-          <div key={j.client} className="flex items-center justify-between p-3 bg-neutral-50 rounded-lg hover:bg-neutral-100 transition">
-            <div>
-              <div className="font-semibold text-sm text-neutral-900">{j.client}</div>
-              <div className="text-xs text-neutral-500">{j.type} · {j.time}</div>
-            </div>
-            <span className={`text-xs font-medium px-2.5 py-1 rounded-full text-white ${j.color}`}>
-              {j.status}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
+      <textarea name="headache" value={form.headache} onChange={handleChange} placeholder="What's your biggest CRM headache? (optional)" rows={3} className="w-full px-5 py-4 rounded-xl border border-neutral-300 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 text-base resize-none" />
+      <button type="submit" className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-8 py-4 rounded-xl text-lg transition">
+        Join the Beta — It's Free →
+      </button>
+      <p className="text-sm text-neutral-500 text-center">No credit card. No commitment. Just early access.</p>
+    </form>
   )
 }
 
 export default function App() {
-  const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-  const [emails, setEmails] = useState([])
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!email) return
-    setEmails((prev) => [...prev, { email, date: new Date().toLocaleString() }])
-    setSubmitted(true)
-    setEmail('')
-    setTimeout(() => setSubmitted(false), 4000)
-  }
-
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       {/* Nav */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-neutral-200">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-neutral-200">
+        <div className="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/logo-symbol.png" alt="StackDek" className="h-8 w-auto" />
+            <img src="/logo-symbol.png" alt="StackDek" className="h-9 w-auto" />
             <span className="text-xl font-bold tracking-tight">StackDek</span>
           </div>
-          <a href="#beta" className="text-sm bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2 rounded-lg font-medium transition">
-            Get Started
+          <a href="#signup" className="bg-neutral-900 hover:bg-neutral-800 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition">
+            Join Beta
           </a>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 py-20 md:py-32">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="inline-block bg-neutral-100 text-neutral-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border border-neutral-200">
-              ✨ Trusted by service crews across the US
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
-              Run Your Whole Business<br />
-              <span className="text-neutral-600">From Your Phone</span>
-            </h1>
-            <p className="text-lg text-neutral-600 mb-10 max-w-lg leading-relaxed">
-              StackDek is the job scheduling, quoting, and invoicing app for lawn care, cleaning, plumbing, and field service businesses. Stop juggling spreadsheets. Start running your operation.
+      {/* ─── HERO ─── */}
+      <section className="max-w-5xl mx-auto px-5 pt-16 pb-20 md:pt-28 md:pb-28 text-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+          The Simple CRM Built<br className="hidden sm:block" /> for Real Contractors
+        </h1>
+        <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto mb-4 leading-relaxed">
+          You don't need a bloated CRM designed for tech companies.<br className="hidden md:block" />
+          You need something that works the way <strong>you</strong> work — fast, flexible, and from your phone.
+        </p>
+        <p className="text-base text-neutral-500 mb-10 max-w-xl mx-auto">
+          StackDek keeps your jobs, quotes, and leads in one simple stack. No learning curve. No desktop required.
+        </p>
+        <a href="#signup" className="inline-block bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-10 py-4 rounded-xl text-lg transition shadow-lg shadow-neutral-900/10">
+          Get Early Access — Free →
+        </a>
+        <p className="text-sm text-neutral-400 mt-5">🚀 Beta users lock in 50% off for life</p>
+      </section>
+
+      {/* ─── CORE IDEA ─── */}
+      <section className="bg-neutral-50 py-16 md:py-24">
+        <div className="max-w-3xl mx-auto px-5">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">We Get How You Really Work</h2>
+          <div className="space-y-6 text-lg text-neutral-700 leading-relaxed">
+            <p>
+              You don't sit at a desk planning your week in a calendar app. You wake up, check the weather, and figure out what's getting done today. Maybe that roofing estimate moves up because it's dry. Maybe the painting job slides because the customer isn't home 'til Thursday.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#beta" className="inline-block bg-neutral-900 hover:bg-neutral-800 text-white font-semibold px-8 py-3.5 rounded-xl transition text-center">
-                Get Early Access →
-              </a>
-              <a href="#features" className="inline-block border border-neutral-300 hover:border-neutral-400 text-neutral-900 font-medium px-8 py-3.5 rounded-xl transition text-center">
-                See How It Works
-              </a>
-            </div>
-            <p className="text-sm text-neutral-500 mt-6">
-              🚀 Beta users get lifetime 50% discount + early feature access
+            <p>
+              Your jobs aren't appointments — they're a <strong>stack</strong>. A pile of work that shifts every day based on what's real, not what some software thinks your schedule should look like.
             </p>
-          </div>
-          <div className="flex justify-center">
-            <DashboardMockup />
+            <p>
+              That's why we built StackDek around a <strong>flexible flow</strong> instead of a rigid calendar. Your quotes live next to your jobs. Your leads don't disappear into a spreadsheet. And the whole thing runs from your phone — because that's where you run your business.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section id="features" className="bg-neutral-50 py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Everything You Need to Run Jobs</h2>
-            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Built specifically for service businesses. No bloat. Just the tools that actually matter.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((f) => (
-              <div key={f.title} className="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg transition">
-                <div className="text-4xl mb-4">{f.icon}</div>
-                <h3 className="text-lg font-bold mb-3 text-neutral-900">{f.title}</h3>
-                <p className="text-sm text-neutral-600 leading-relaxed">{f.desc}</p>
+      {/* ─── PAIN POINTS ─── */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-3xl mx-auto px-5">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">Sound Familiar?</h2>
+          <p className="text-center text-neutral-600 mb-12 text-lg">Every CRM you've tried has the same problems:</p>
+          <div className="space-y-4">
+            {painPoints.map((p) => (
+              <div key={p.text} className="flex items-start gap-4 bg-red-50 border border-red-100 rounded-xl p-5">
+                <span className="text-2xl flex-shrink-0">{p.icon}</span>
+                <p className="text-neutral-800 text-base sm:text-lg">{p.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Social Proof / Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Why Service Businesses Love StackDek</h2>
-          <p className="text-lg text-neutral-600">Real feedback from real users</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t) => (
-            <div key={t.name} className="bg-white border border-neutral-200 rounded-xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="text-4xl">{t.avatar}</div>
-                <div className="text-left">
-                  <p className="font-bold text-neutral-900">{t.name}</p>
-                  <p className="text-sm text-neutral-600">{t.title}</p>
-                </div>
+      {/* ─── FEATURES TEASE ─── */}
+      <section className="bg-neutral-50 py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-5">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">What You Actually Get</h2>
+          <p className="text-center text-neutral-600 mb-12 text-lg max-w-2xl mx-auto">Six things. That's it. No feature bloat — just what contractors told us they need.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((f) => (
+              <div key={f.title} className="bg-white border border-neutral-200 rounded-2xl p-7 hover:shadow-lg transition">
+                <div className="text-4xl mb-4">{f.icon}</div>
+                <h3 className="text-lg font-bold mb-2 text-neutral-900">{f.title}</h3>
+                <p className="text-neutral-600 leading-relaxed">{f.desc}</p>
               </div>
-              <p className="text-neutral-700 leading-relaxed italic">"{t.text}"</p>
-              <div className="mt-4 text-yellow-400">★★★★★</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Problem/Solution */}
-      <section className="bg-neutral-900 text-white py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">The Old Way</h2>
-              <ul className="space-y-4">
-                <li className="flex gap-3">
-                  <span className="text-red-400 font-bold">✗</span>
-                  <span>Jobs scattered across texts, calls, and your calendar</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-red-400 font-bold">✗</span>
-                  <span>Quotes take 30 minutes (on paper or email)</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-red-400 font-bold">✗</span>
-                  <span>No idea if your jobs are actually profitable</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-red-400 font-bold">✗</span>
-                  <span>Crew confusion about what's next (lots of calls)</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-red-400 font-bold">✗</span>
-                  <span>Invoicing is manual and painful</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-4xl font-bold mb-6">With StackDek</h2>
-              <ul className="space-y-4">
-                <li className="flex gap-3">
-                  <span className="text-green-400 font-bold">✓</span>
-                  <span>Every job visible in your Job Stack</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-green-400 font-bold">✓</span>
-                  <span>Professional quotes in 60 seconds</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-green-400 font-bold">✓</span>
-                  <span>Real-time dashboard showing revenue & metrics</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-green-400 font-bold">✓</span>
-                  <span>Your crew knows the day's stack (no chaos)</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-green-400 font-bold">✓</span>
-                  <span>Invoices sent automatically</span>
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="beta" className="max-w-3xl mx-auto px-6 py-24 text-center">
-        <h2 className="text-4xl font-bold mb-4">Join the Beta — Free for 30 Days</h2>
-        <p className="text-lg text-neutral-600 mb-10">
-          Get your crew organized. Stop managing chaos. Beta users lock in 50% off for life.
-        </p>
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-8">
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@company.com"
-            className="flex-1 px-5 py-3.5 rounded-xl border border-neutral-300 text-neutral-900 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-900 transition"
-          />
-          <button
-            type="submit"
-            className="bg-neutral-900 hover:bg-neutral-800 text-white px-8 py-3.5 rounded-xl font-semibold transition whitespace-nowrap"
-          >
-            Get Access
-          </button>
-        </form>
-        {submitted && (
-          <p className="text-green-600 font-medium">✅ You're on the list! Check your email for next steps.</p>
-        )}
-        <p className="text-sm text-neutral-500">No credit card required. Instant setup.</p>
+      {/* ─── SOCIAL PROOF ─── */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-5">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">Contractors Get It</h2>
+          <p className="text-center text-neutral-600 mb-12 text-lg">Here's what early testers are saying</p>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {testimonials.map((t) => (
+              <div key={t.name} className="bg-white border border-neutral-200 rounded-2xl p-7">
+                <p className="text-neutral-800 text-lg leading-relaxed italic mb-5">"{t.text}"</p>
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl">{t.avatar}</span>
+                  <div>
+                    <p className="font-bold text-neutral-900">{t.name}</p>
+                    <p className="text-sm text-neutral-500">{t.trade}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* FAQ (mini) */}
-      <section className="bg-neutral-50 py-20">
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">Quick Questions?</h2>
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-bold text-lg mb-2">Is this for my type of business?</h3>
-              <p className="text-neutral-600">Designed for lawn care, landscaping, cleaning, plumbing, painting, and any field service business that takes jobs and sends quotes.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-2">Can my whole team use it?</h3>
-              <p className="text-neutral-600">Yes. Unlimited crew members can view the job stack and update status. The owner manages clients, quotes, and settings.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-2">Do you offer support?</h3>
-              <p className="text-neutral-600">During beta, yes — direct email support. We respond within a few hours. Eventually Slack/chat.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-2">How much will it cost after beta?</h3>
-              <p className="text-neutral-600">TBD. But beta users get 50% off whatever we charge. Lock it in now.</p>
-            </div>
+      {/* ─── FOOTER CTA + SIGN-UP ─── */}
+      <section id="signup" className="bg-neutral-900 text-white py-16 md:py-24">
+        <div className="max-w-3xl mx-auto px-5 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Join the StackDek Beta Today</h2>
+          <p className="text-lg text-neutral-300 mb-10 max-w-xl mx-auto">
+            Get in early. Help shape the tool. Lock in the lowest price we'll ever offer.
+          </p>
+          <div className="bg-white text-neutral-900 rounded-2xl p-8 sm:p-10">
+            <SignUpForm />
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-200 bg-neutral-50 py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
-            <div className="flex items-center gap-2">
-              <img src="/logo-symbol.png" alt="StackDek" className="h-8 w-auto" />
-              <span className="font-bold text-lg">StackDek</span>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-              <div>
-                <p className="text-sm font-semibold text-neutral-900 mb-3">Product</p>
-                <ul className="space-y-2 text-sm text-neutral-600">
-                  <li><a href="#features" className="hover:text-neutral-900 transition">Features</a></li>
-                  <li><a href="#" className="hover:text-neutral-900 transition">Pricing</a></li>
-                  <li><a href="#" className="hover:text-neutral-900 transition">Security</a></li>
-                </ul>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-neutral-900 mb-3">Company</p>
-                <ul className="space-y-2 text-sm text-neutral-600">
-                  <li><a href="#" className="hover:text-neutral-900 transition">About</a></li>
-                  <li><a href="#" className="hover:text-neutral-900 transition">Blog</a></li>
-                  <li><a href="#" className="hover:text-neutral-900 transition">Contact</a></li>
-                </ul>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-neutral-900 mb-3">Legal</p>
-                <ul className="space-y-2 text-sm text-neutral-600">
-                  <li><a href="#" className="hover:text-neutral-900 transition">Privacy</a></li>
-                  <li><a href="#" className="hover:text-neutral-900 transition">Terms</a></li>
-                  <li><a href="mailto:hello@stackdek.com" className="hover:text-neutral-900 transition">Email</a></li>
-                </ul>
-              </div>
-            </div>
+      <footer className="border-t border-neutral-200 bg-neutral-50 py-10">
+        <div className="max-w-5xl mx-auto px-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+          <div className="flex items-center gap-2">
+            <img src="/logo-symbol.png" alt="StackDek" className="h-7 w-auto" />
+            <span className="font-bold text-neutral-700">StackDek</span>
           </div>
-          <div className="border-t border-neutral-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-neutral-600">
-            <p>© {new Date().getFullYear()} StackDek. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-neutral-900 transition">Twitter</a>
-              <a href="#" className="hover:text-neutral-900 transition">LinkedIn</a>
-              <a href="#" className="hover:text-neutral-900 transition">Facebook</a>
-            </div>
-          </div>
+          <p>© {new Date().getFullYear()} StackDek. All rights reserved.</p>
+          <a href="mailto:hello@stackdek.com" className="hover:text-neutral-900 transition">hello@stackdek.com</a>
         </div>
       </footer>
     </div>
