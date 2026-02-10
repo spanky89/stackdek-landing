@@ -10,11 +10,12 @@ const features = [
 ]
 
 const painPoints = [
-  { icon: '💸', text: 'Pricing bloat — $50/month turns into $200 once you add your crew' },
-  { icon: '🔒', text: 'Paywalls everywhere — basic features locked behind "Pro" plans' },
-  { icon: '🤯', text: 'Overly complex — built for enterprise, not a 5-person roofing crew' },
-  { icon: '🖥️', text: "Desktop-first — useless when you're standing in a customer's yard" },
-  { icon: '📢', text: 'Too much noise — dashboards full of stuff you never asked for' },
+  { icon: '💸', text: 'Pricing balloons — starts at $50/month, then doubles when you add your crew and need basic features' },
+  { icon: '🔒', text: 'Features locked behind paywalls — want to send a simple quote? That\'s a "Pro" plan upgrade' },
+  { icon: '📅', text: 'Overly complex scheduling — forced into color-coded calendars and strict 15-minute time slots that don\'t match how you work' },
+  { icon: '🤯', text: 'Built for enterprise — designed for 500-person companies, not a 5-person roofing crew running jobs off the dash' },
+  { icon: '🖥️', text: "Desktop-first design — completely useless when you're standing in a customer's yard or up on a roof" },
+  { icon: '📢', text: 'Feature bloat everywhere — dashboards crammed with stuff you never asked for and will never use' },
 ]
 
 const testimonials = [
@@ -93,15 +94,16 @@ export default function App() {
 
       {/* ─── HERO ─── */}
       <section className="max-w-5xl mx-auto px-5 pt-16 pb-20 md:pt-28 md:pb-28 text-center">
+        <p className="text-sm sm:text-base font-bold uppercase tracking-widest text-neutral-500 mb-4">Built by Contractors, For Contractors</p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-          The Simple CRM Built<br className="hidden sm:block" /> for Real Contractors
+          The Simple CRM That<br className="hidden sm:block" /> Works Like You Do
         </h1>
         <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto mb-4 leading-relaxed">
-          You don't need a bloated CRM designed for tech companies.<br className="hidden md:block" />
-          You need something that works the way <strong>you</strong> work — fast, flexible, and from your phone.
+          Tired of CRMs like Jobber that pile on bloat, hidden fees, and forced schedules?<br className="hidden md:block" />
+          We're stripping out the complexity that slows you down and keeping what actually helps: <strong>more jobs closed, less time wasted chasing details.</strong>
         </p>
         <p className="text-base text-neutral-500 mb-10 max-w-xl mx-auto">
-          StackDek keeps your jobs, quotes, and leads in one simple stack. No learning curve. No desktop required.
+          Made by contractors, for contractors — we know what you need. Your jobs, quotes, and leads in one simple stack. No learning curve. No desktop required.
         </p>
         <a href="#signup" className="inline-block bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-10 py-4 rounded-xl text-lg transition shadow-lg shadow-neutral-900/10">
           Get Early Access — Free →
@@ -115,13 +117,19 @@ export default function App() {
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">We Get How You Really Work</h2>
           <div className="space-y-6 text-lg text-neutral-700 leading-relaxed">
             <p>
-              You don't sit at a desk planning your week in a calendar app. You wake up, check the weather, and figure out what's getting done today. Maybe that roofing estimate moves up because it's dry. Maybe the painting job slides because the customer isn't home 'til Thursday.
+              Let's be real — most old-school contractors don't live by color-coded calendars and strict 15-minute slots. You've got a <strong>stack of quotes sitting on the dash</strong>, a mental list of callbacks, and you're figuring out what gets done today based on the weather, who's home, and what's been waiting the longest.
             </p>
             <p>
-              Your jobs aren't appointments — they're a <strong>stack</strong>. A pile of work that shifts every day based on what's real, not what some software thinks your schedule should look like.
+              That's not disorganized — that's how the trade works. But every CRM out there tries to force you into some corporate workflow designed for office managers, not guys running crews out of their truck.
+            </p>
+            <p>
+              Your jobs aren't appointments — they're a <strong>stack</strong>. A pile of work that shifts every day based on what's real, not what some software thinks your schedule should look like. Rain delay? Emergency call? Customer no-show? You adapt. Your tools should too.
             </p>
             <p>
               That's why we built StackDek around a <strong>flexible flow</strong> instead of a rigid calendar. Your quotes live next to your jobs. Your leads don't disappear into a spreadsheet. And the whole thing runs from your phone — because that's where you run your business.
+            </p>
+            <p className="font-semibold text-neutral-900">
+              We're stripping out the complexity that slows you down and keeping what actually helps: more jobs closed, less time wasted chasing details.
             </p>
           </div>
         </div>
