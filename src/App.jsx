@@ -33,15 +33,38 @@ const trades = [
 function SignUpForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', trade: '', headache: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!form.email || !form.name) return
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 5000)
-    setForm({ name: '', email: '', phone: '', trade: '', headache: '' })
+
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit signup')
+      }
+
+      setSubmitted(true)
+      setForm({ name: '', email: '', phone: '', trade: '', headache: '' })
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (err) {
+      setError('Something went wrong. Please try again.')
+      console.error('Signup error:', err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -68,8 +91,9 @@ function SignUpForm() {
         </select>
       </div>
       <textarea name="headache" value={form.headache} onChange={handleChange} placeholder="What's your biggest CRM headache? (optional)" rows={3} className="w-full px-5 py-4 rounded-xl border border-neutral-300 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 text-base resize-none" />
-      <button type="submit" className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-8 py-4 rounded-xl text-lg transition">
-        Join the Beta — It's Free →
+      {error && <p className="text-red-600 text-sm text-center">{error}</p>}
+      <button type="submit" disabled={loading} className="w-full bg-neutral-900 hover:bg-neutral-800 disabled:opacity-50 text-white font-bold px-8 py-4 rounded-xl text-lg transition">
+        {loading ? 'Joining...' : 'Join the Beta — It\'s Free →'}
       </button>
       <p className="text-sm text-neutral-500 text-center">No credit card. No commitment. Just early access.</p>
     </form>
