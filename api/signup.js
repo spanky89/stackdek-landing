@@ -1,10 +1,7 @@
-import { VercelRequest, VercelResponse } from '@vercel/node'
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.VITE_SUPABASE_URL
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY || process.env.VITE_SUPABASE_ANON_KEY
-const googleSheetsApiKey = process.env.GOOGLE_SHEETS_API_KEY
-const sheetsId = '1auECJo1Z8iNqOCKaPdyqrWAom1zNGXbEmNxPeuw_CVs'
 
 if (!supabaseUrl || !supabaseServiceKey) {
   throw new Error('Missing Supabase credentials')
@@ -12,42 +9,7 @@ if (!supabaseUrl || !supabaseServiceKey) {
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
-async function appendToGoogleSheet(name: string, email: string, phone: string, trade: string, headache: string) {
-  if (!googleSheetsApiKey) {
-    console.warn('Google Sheets API key not configured, skipping sheet append')
-    return
-  }
-
-  try {
-    const timestamp = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
-    const values = [[name, email, phone || '', trade || '', headache || '', timestamp]]
-
-    const response = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${sheetsId}/values/Sheet1!A:F:append?valueInputOption=USER_ENTERED&key=${googleSheetsApiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ values }),
-      }
-    )
-
-    if (!response.ok) {
-      console.error('Google Sheets error:', await response.text())
-    }
-  } catch (error) {
-    console.error('Failed to append to Google Sheet:', error)
-  }
-}
-
-interface SignupData {
-  name: string
-  email: string
-  phone?: string
-  trade?: string
-  headache?: string
-}
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true')
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -64,7 +26,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { name, email, phone, trade, headache } = req.body as SignupData
+    const { name, email, phone, trade, headache } = req.body
 
     // Validate required fields
     if (!name || !email) {
@@ -89,11 +51,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       console.error('Database error:', dbError)
       return res.status(500).json({ error: 'Failed to save signup' })
     }
-
-    // Add to Google Sheet (async, don't wait)
-    appendToGoogleSheet(name, email, phone || '', trade || '', headache || '').catch(err => 
-      console.error('Sheet append failed:', err)
-    )
 
     // TODO: Send notification email (Resend or similar)
 
