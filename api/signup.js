@@ -26,15 +26,22 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('Signup request received:', req.body)
+    console.log('Supabase URL:', supabaseUrl)
+    console.log('Service key exists:', !!supabaseServiceKey)
+
     const { name, email, phone, trade, headache } = req.body
 
     // Validate required fields
     if (!name || !email) {
+      console.log('Validation failed - missing name or email')
       return res.status(400).json({ error: 'Name and email are required' })
     }
 
+    console.log('About to insert into Supabase...')
+    
     // Store in Supabase
-    const { error: dbError } = await supabase
+    const { data, error: dbError } = await supabase
       .from('signups')
       .insert([
         {
@@ -49,10 +56,10 @@ export default async function handler(req, res) {
 
     if (dbError) {
       console.error('Database error:', dbError)
-      return res.status(500).json({ error: 'Failed to save signup' })
+      return res.status(500).json({ error: 'Database error: ' + dbError.message })
     }
 
-    // TODO: Send notification email (Resend or similar)
+    console.log('Successfully inserted signup:', data)
 
     return res.status(200).json({ 
       success: true, 
@@ -60,6 +67,6 @@ export default async function handler(req, res) {
     })
   } catch (error) {
     console.error('Signup error:', error)
-    return res.status(500).json({ error: 'Internal server error' })
+    return res.status(500).json({ error: 'Error: ' + error.message })
   }
 }
