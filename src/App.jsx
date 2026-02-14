@@ -107,7 +107,7 @@ export default function App() {
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-neutral-200">
         <div className="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src="/logo-transparent.png" alt="StackDek" className="h-20 w-auto" />
+            <img src="/logo-transparent.png" alt="StackDek" className="h-10 w-auto" />
           </div>
           <a href="#signup" className="bg-neutral-900 hover:bg-neutral-800 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition">
             Join Beta
@@ -230,7 +230,7 @@ export default function App() {
       <footer className="border-t border-neutral-200 bg-neutral-50 py-10">
         <div className="max-w-5xl mx-auto px-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
           <div className="flex items-center gap-2">
-            <img src="/logo-transparent.png" alt="StackDek" className="h-16 w-auto" />
+            <img src="/logo-transparent.png" alt="StackDek" className="h-8 w-auto" />
           </div>
           <p>© {new Date().getFullYear()} StackDek. All rights reserved.</p>
           <a href="mailto:hello@stackdek.com" className="hover:text-neutral-900 transition">hello@stackdek.com</a>
