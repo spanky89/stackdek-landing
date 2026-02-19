@@ -7,9 +7,14 @@ export default function Privacy() {
           <a href="/" className="flex items-center gap-2">
             <img src="/logo-transparent.png" alt="StackDek" className="h-10 w-auto" />
           </a>
-          <a href="/" className="text-orange-600 hover:text-orange-700 font-semibold text-sm transition">
-            ← Back to Home
-          </a>
+          <div className="flex items-center gap-4">
+            <a href="https://stackdek-app.vercel.app/login" className="text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">
+              Login
+            </a>
+            <a href="/" className="text-orange-600 hover:text-orange-700 font-semibold text-sm transition">
+              ← Home
+            </a>
+          </div>
         </div>
       </nav>
 

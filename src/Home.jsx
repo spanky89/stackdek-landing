@@ -180,6 +180,9 @@ export default function Home() {
             <a href="#features" className="hidden md:block text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">Features</a>
             <a href="#pricing" className="hidden md:block text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">Pricing</a>
             <a href="#faq" className="hidden md:block text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">FAQ</a>
+            <a href="https://stackdek-app.vercel.app/login" className="hidden sm:block text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">
+              Login
+            </a>
             <a href="#signup" className="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition shadow-md">
               Get Started
             </a>
