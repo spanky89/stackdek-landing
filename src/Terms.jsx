@@ -1,11 +1,26 @@
+import { useEffect } from 'react'
+
 export default function Terms() {
+  useEffect(() => {
+    document.title = 'Terms of Service | StackDek - CRM for Contractors'
+    
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]')
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta')
+      metaDescription.name = 'description'
+      document.head.appendChild(metaDescription)
+    }
+    metaDescription.content = 'StackDek Terms of Service - Understand the terms and conditions for using our contractor CRM and job management platform.'
+  }, [])
+
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-neutral-200">
         <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
-            <img src="/logo-transparent.png" alt="StackDek" className="h-12 sm:h-14 w-auto" />
+            <img src="/logo-transparent.png" alt="StackDek - CRM for Contractors Logo" className="h-12 sm:h-14 w-auto" />
           </a>
           <div className="flex items-center gap-3 sm:gap-4">
             <a href="https://stackdek-app.vercel.app/login" className="text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">

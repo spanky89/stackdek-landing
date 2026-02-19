@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const features = [
   { 
@@ -168,13 +168,26 @@ function SignUpForm() {
 export default function Home() {
   const [expandedFaq, setExpandedFaq] = useState(null)
 
+  useEffect(() => {
+    document.title = 'CRM for Contractors | StackDek - Job Scheduling & Quoting Software'
+    
+    // Reset meta description to homepage content
+    let metaDescription = document.querySelector('meta[name="description"]')
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta')
+      metaDescription.name = 'description'
+      document.head.appendChild(metaDescription)
+    }
+    metaDescription.content = 'Simple CRM for contractors. Stack-based job scheduling, 60-second quoting, built-in contracts & e-signature. No per-seat fees. Built for roofing, HVAC, landscaping & service businesses.'
+  }, [])
+
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-neutral-200">
         <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src="/logo-transparent.png" alt="StackDek" className="h-12 sm:h-14 w-auto" />
+            <img src="/logo-transparent.png" alt="StackDek - CRM for Contractors Logo" className="h-12 sm:h-14 w-auto" />
           </div>
           <div className="flex items-center gap-3 sm:gap-6">
             <a href="#features" className="hidden md:block text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">Features</a>
@@ -194,7 +207,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-5 pt-16 pb-20 md:pt-28 md:pb-28 text-center">
         <p className="text-sm sm:text-base font-bold uppercase tracking-widest text-orange-600 mb-4">Built by Contractors, For Contractors</p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
-          Run Your Entire Business<br className="hidden sm:block" /> From One Simple Stack
+          CRM for Contractors<br className="hidden sm:block" /> Job Scheduling & Quoting Made Simple
         </h1>
         <p className="text-lg sm:text-xl text-neutral-600 max-w-3xl mx-auto mb-4 leading-relaxed">
           Replace Jobber + DocuSign + your marketing tools with one affordable CRM built for real contractors.<br className="hidden md:block" />
@@ -229,7 +242,7 @@ export default function Home() {
       {/* ─── CORE IDEA ─── */}
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-5">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8">We Get How You Really Work</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8">Contractor Management Software That Works How You Work</h2>
           <div className="space-y-6 text-lg text-neutral-700 leading-relaxed">
             <p>
               Let's be real — most contractors don't live by color-coded calendars and strict 15-minute slots. You've got a <strong>stack of quotes sitting on the dash</strong>, a mental list of callbacks, and you're figuring out what gets done today based on the weather, who's home, and what's been waiting the longest.
@@ -253,7 +266,7 @@ export default function Home() {
       {/* ─── PAIN POINTS ─── */}
       <section className="bg-neutral-50 py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-5">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">Tired of This?</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">Why Contractors Switch from Jobber & ServiceTitan</h2>
           <p className="text-center text-neutral-600 mb-12 text-lg">The problems with every other contractor CRM:</p>
           <div className="space-y-4">
             {painPoints.map((p) => (
@@ -275,7 +288,7 @@ export default function Home() {
       {/* ─── FEATURES ─── */}
       <section id="features" className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-5">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">Everything You Need. Nothing You Don't.</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">Complete Contractor CRM Features</h2>
           <p className="text-center text-neutral-600 mb-12 text-lg max-w-3xl mx-auto">Six core features. No bloat. Just what contractors actually use every day.</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f) => (
@@ -293,7 +306,7 @@ export default function Home() {
       {/* ─── PRICING ─── */}
       <section id="pricing" className="bg-gradient-to-b from-neutral-50 to-white py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-5">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">Simple, Honest Pricing</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">Contractor CRM Pricing - No Per-Seat Fees</h2>
           <p className="text-center text-neutral-600 mb-12 text-lg max-w-2xl mx-auto">One low price. All features included. No hidden costs. No per-seat fees.</p>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
