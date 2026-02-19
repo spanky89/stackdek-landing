@@ -404,19 +404,22 @@ export default function App() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8">Why We Built This</h2>
           <div className="space-y-6 text-lg leading-relaxed text-neutral-300">
             <p>
-              StackDek was built by <strong className="text-white">Jarrod</strong>, a contractor who got tired of paying hundreds of dollars a month for bloated software that didn't match how he actually worked.
+              StackDek was built by <strong className="text-white">Jarrod Barber</strong>, who owns a landscaping business in North Georgia. He built StackDek for his own business first — and quickly realized every contractor around him was dealing with the same pain points.
             </p>
             <p>
-              Every CRM on the market was designed for corporate teams with office managers and strict schedules. None of them understood that contractors don't work that way. Jobs shift. Weather happens. Priorities change hourly.
+              Here's the thing: when Jarrod shows up to quote a landscaping job, he walks the property with the customer, discusses what they want, and <strong className="text-white">sends them a professional quote before he leaves</strong>. Right there. On the spot.
             </p>
             <p>
-              So we built something different: <strong className="text-white">a flexible stack instead of a rigid calendar</strong>. A tool that adapts to your day instead of forcing your day to adapt to it.
+              Customers are <em>shocked</em>. They're used to contractors saying "I'll send you something in a few days" — and then waiting a week or two for a number. When you quote on the spot, you look different. <strong className="text-white">Speed and professionalism skyrocket.</strong> Customers see you're not like the rest.
             </p>
             <p>
-              And we bundled everything you actually need — <strong className="text-white">CRM, quotes, contracts, job costing, marketing</strong> — into one affordable package. Because paying $290/month for three separate subscriptions is insane.
+              But to do that, you need tools that actually work the way you work. Every CRM on the market was designed for corporate teams with office managers and strict schedules. None of them understood that contractors don't operate that way. Jobs shift. Weather happens. Priorities change hourly.
+            </p>
+            <p>
+              So we built something different: <strong className="text-white">a flexible stack instead of a rigid calendar</strong>. A tool that adapts to your day instead of forcing your day to adapt to it. And we bundled everything you actually need — <strong className="text-white">CRM, quotes, contracts, job costing, marketing</strong> — into one affordable package. Because paying $290/month for three separate subscriptions is insane.
             </p>
             <p className="text-xl text-orange-400 font-semibold">
-              Built by contractors. Priced for contractors. Designed for the way you really work.
+              Built by a contractor. Priced for contractors. Designed for the way you really work.
             </p>
           </div>
           <div className="mt-12 text-center">
