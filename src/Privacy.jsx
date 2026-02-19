@@ -5,9 +5,9 @@ export default function Privacy() {
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-neutral-200">
         <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
-            <img src="/logo-transparent.png" alt="StackDek" className="h-10 w-auto" />
+            <img src="/logo-transparent.png" alt="StackDek" className="h-12 sm:h-14 w-auto" />
           </a>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <a href="https://stackdek-app.vercel.app/login" className="text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">
               Login
             </a>
