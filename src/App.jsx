@@ -27,9 +27,9 @@ const features = [
   },
   { 
     icon: '📱', 
-    title: 'Mobile & Offline', 
-    desc: "Works on your phone. Works without signal. Because you're on a roof, not at a desk.",
-    detail: 'Native mobile apps for iOS and Android. Offline mode syncs when you get back online. Built for the job site.'
+    title: 'Mobile-First', 
+    desc: "Works perfectly on your phone. Because you're on a roof, not at a desk.",
+    detail: 'Fully responsive web app optimized for mobile. Access everything from your phone at the job site.'
   },
   { 
     icon: '🎯', 
@@ -65,8 +65,8 @@ const faqs = [
     a: 'Nope! Contract creation, sending, and e-signature are built right into StackDek Pro. No third-party tools needed. Save $60/month on DocuSign fees.'
   },
   {
-    q: 'Can I use this offline on job sites?',
-    a: 'Yes. The mobile app works without internet. View jobs, create quotes, take notes. Everything syncs when you\'re back online.'
+    q: 'Does it work on mobile at job sites?',
+    a: 'Yes. StackDek is fully responsive and optimized for mobile browsers. Access everything from your phone — view jobs, create quotes, manage customers. Just need an internet connection.'
   },
   {
     q: 'What if I have a crew? Do I pay per user?',
@@ -307,7 +307,7 @@ export default function App() {
                 <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓</span> <span>Digital job stack</span></li>
                 <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓</span> <span>Basic quotes & invoices</span></li>
                 <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓</span> <span>Lead tracking</span></li>
-                <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓</span> <span>Mobile app</span></li>
+                <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓</span> <span>Mobile-friendly interface</span></li>
                 <li className="flex items-start gap-2"><span className="text-neutral-300 font-bold">✗</span> <span className="text-neutral-400">Contract signing</span></li>
                 <li className="flex items-start gap-2"><span className="text-neutral-300 font-bold">✗</span> <span className="text-neutral-400">Job costing</span></li>
                 <li className="flex items-start gap-2"><span className="text-neutral-300 font-bold">✗</span> <span className="text-neutral-400">Marketing automation</span></li>
@@ -336,7 +336,7 @@ export default function App() {
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>In-app contract sending & e-signature</strong></span></li>
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Job costing & profit tracking</strong></span></li>
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Marketing automation suite</strong></span></li>
-                <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span>Mobile app + offline mode</span></li>
+                <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span>Mobile-optimized interface</span></li>
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Priority support</strong></span></li>
               </ul>
               <a href="#signup" className="block text-center bg-white hover:bg-neutral-100 text-orange-600 font-bold px-6 py-4 rounded-xl transition shadow-lg text-lg">
