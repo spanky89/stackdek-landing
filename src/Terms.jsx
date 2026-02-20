@@ -23,7 +23,7 @@ export default function Terms() {
             <img src="/logo-transparent.png" alt="StackDek - CRM for Contractors Logo" className="h-12 sm:h-14 w-auto" />
           </a>
           <div className="flex items-center gap-3 sm:gap-4">
-            <a href="https://stackdek-app.vercel.app/login" className="text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">
+            <a href="https://app.stackdek.com/login" className="text-neutral-600 hover:text-neutral-900 font-medium text-sm transition">
               Login
             </a>
             <a href="/" className="text-orange-600 hover:text-orange-700 font-semibold text-sm transition">
@@ -288,3 +288,4 @@ export default function Terms() {
     </div>
   )
 }
+
