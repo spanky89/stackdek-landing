@@ -530,6 +530,7 @@ export default function Home() {
                 <li><a href="#features" className="hover:text-neutral-900">Features</a></li>
                 <li><a href="#pricing" className="hover:text-neutral-900">Pricing</a></li>
                 <li><a href="#faq" className="hover:text-neutral-900">FAQ</a></li>
+                <li><a href="/blog" className="hover:text-neutral-900">Blog</a></li>
               </ul>
             </div>
             <div>

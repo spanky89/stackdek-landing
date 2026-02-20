@@ -5,6 +5,8 @@ import './App.css'
 const Home = lazy(() => import('./Home'))
 const Privacy = lazy(() => import('./Privacy'))
 const Terms = lazy(() => import('./Terms'))
+const BlogIndex = lazy(() => import('./BlogIndex'))
+const BlogPost = lazy(() => import('./BlogPost'))
 
 export default function App() {
   return (
@@ -13,6 +15,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </Suspense>
   )
