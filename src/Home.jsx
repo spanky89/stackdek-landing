@@ -15,9 +15,9 @@ const features = [
   },
   { 
     icon: '📝', 
-    title: 'Simple Quotes & Contracts', 
-    desc: 'Build a quote in 60 seconds. Send AND sign contracts right in the app — no DocuSign needed.',
-    detail: 'Professional quotes with your branding. Built-in e-signature. Track opens and signatures. Text or email delivery.'
+    title: 'Simple Quotes & Invoices', 
+    desc: 'Build a professional quote in minutes and carry the details through the job and invoice.',
+    detail: 'Branded quotes, reusable line items, deposits, invoicing, and text or email delivery.'
   },
   { 
     icon: '📊', 
@@ -33,19 +33,19 @@ const features = [
   },
   { 
     icon: '🎯', 
-    title: 'Marketing Suite', 
-    desc: 'Automated follow-ups, email campaigns, and customer reminders. Stay top-of-mind without lifting a finger.',
-    detail: 'Pre-built templates for common scenarios. Schedule campaigns. Track engagement. Turn past customers into repeat business.'
+    title: 'Team Operations', 
+    desc: 'Invite your crew, assign work, track time, and keep employees focused on only the jobs they need.',
+    detail: 'Role-based access, secure invitations, job assignments, mobile clocking, expenses, and real labor costs.'
   },
 ]
 
 const painPoints = [
   { icon: '💸', text: 'Pricing balloons — starts at $50/month, then doubles when you add your crew and need basic features' },
-  { icon: '🔒', text: 'Features locked behind paywalls — want to send a simple contract? That\'s the "Pro" plan, plus DocuSign fees' },
+  { icon: '🔒', text: 'Features locked behind add-ons — team access and job costing often require expensive upgrades' },
   { icon: '📅', text: 'Overly complex scheduling — forced into color-coded calendars and strict 15-minute time slots that don\'t match how you work' },
   { icon: '🤯', text: 'Built for enterprise — designed for 500-person companies, not a 5-person roofing crew running jobs off the dash' },
   { icon: '🖥️', text: "Desktop-first design — completely useless when you're standing in a customer's yard or up on a roof" },
-  { icon: '📢', text: 'Hidden costs everywhere — CRM + contract tools + marketing automation = $290/month or more' },
+  { icon: '📢', text: 'Hidden costs everywhere — base subscription + per-seat fees + job-costing add-ons stack up fast' },
 ]
 
 const testimonials = [
@@ -58,11 +58,11 @@ const testimonials = [
 const faqs = [
   {
     q: 'How is this different from Jobber, Housecall Pro, or ServiceTitan?',
-    a: 'Those tools were built for large companies with office staff. StackDek is built for small crews who run their business from a truck. We focus on a flexible "stack" workflow instead of rigid calendars, and we bundle contracts + marketing at one low price instead of nickel-and-diming you.'
+    a: 'Those tools were built for large companies with office staff. StackDek is built for small crews who run their business from a truck. We focus on a flexible stack workflow, fast quoting, secure team operations, and real job costing without per-seat fees.'
   },
   {
-    q: 'Do I need DocuSign or another contract service?',
-    a: 'Nope! Contract creation, sending, and e-signature are built right into StackDek Pro. No third-party tools needed. Save $60/month on DocuSign fees.'
+    q: 'What does Pro add?',
+    a: 'Pro adds secure team invitations, role-based access, job assignments, employee time tracking, expense review, and job-costing reports. Contracts and marketing automation are not included in the current Pro MVP.'
   },
   {
     q: 'Does it work on mobile at job sites?',
@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     q: 'What if I have a crew? Do I pay per user?',
-    a: 'Pro plan includes multi-user access at no extra charge. Add your whole crew. No per-seat fees.'
+    a: 'Pro includes multi-user access for up to 10 team members at no extra charge. No per-seat fees.'
   },
   {
     q: 'Is there a free trial?',
@@ -178,7 +178,7 @@ export default function Home() {
       metaDescription.name = 'description'
       document.head.appendChild(metaDescription)
     }
-    metaDescription.content = 'Simple CRM for contractors. Stack-based job scheduling, 60-second quoting, built-in contracts & e-signature. No per-seat fees. Built for roofing, HVAC, landscaping & service businesses.'
+    metaDescription.content = 'Simple CRM for contractors. Stack-based job scheduling, fast quoting, secure team operations, time tracking, and job costing. No per-seat fees.'
   }, [])
 
   return (
@@ -210,11 +210,11 @@ export default function Home() {
           CRM for Contractors<br className="hidden sm:block" /> Job Scheduling & Quoting Made Simple
         </h1>
         <p className="text-lg sm:text-xl text-neutral-600 max-w-3xl mx-auto mb-4 leading-relaxed">
-          Replace Jobber + DocuSign + your marketing tools with one affordable CRM built for real contractors.<br className="hidden md:block" />
-          <strong>CRM • Quotes • Contracts • Job Costing • Marketing — all in one place.</strong>
+          Run jobs, quotes, invoices, crews, time, expenses, and profit from one affordable CRM built for real contractors.<br className="hidden md:block" />
+          <strong>CRM • Quotes • Team Operations • Time Tracking • Job Costing</strong>
         </p>
         <p className="text-base text-neutral-500 mb-10 max-w-2xl mx-auto">
-          No rigid calendars. No per-seat fees. No third-party contract services. Just a simple stack of jobs that works the way you think.
+          No rigid calendars. No per-seat fees. Just a simple stack of jobs that works the way you think.
         </p>
         <a href="#signup" className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold px-12 py-5 rounded-xl text-xl transition shadow-xl shadow-orange-600/20">
           Start Free Trial →
@@ -227,14 +227,14 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left">
           <div>
             <p className="text-orange-100 text-sm font-semibold mb-1">What contractors currently pay:</p>
-            <p className="text-3xl font-bold">$290<span className="text-lg font-normal">/month</span></p>
-            <p className="text-orange-100 text-sm">Jobber + DocuSign + Marketing Tools</p>
+            <p className="text-3xl font-bold">Multiple tools</p>
+            <p className="text-orange-100 text-sm">CRM + crew time tracking + job-costing add-ons</p>
           </div>
           <div className="text-4xl">→</div>
           <div>
             <p className="text-orange-100 text-sm font-semibold mb-1">StackDek Pro — Everything included:</p>
             <p className="text-5xl font-bold">$69<span className="text-2xl font-normal">/month</span></p>
-            <p className="text-orange-100 text-sm font-bold">Save $221/month = $2,652/year</p>
+            <p className="text-orange-100 text-sm font-bold">Team operations and job costing included</p>
           </div>
         </div>
       </section>
@@ -254,7 +254,7 @@ export default function Home() {
               Your jobs aren't appointments — they're a <strong>stack</strong>. A pile of work that shifts every day based on what's real, not what some software thinks your schedule should look like. Rain delay? Emergency call? Customer no-show? You adapt. Your tools should too.
             </p>
             <p>
-              That's why we built StackDek around a <strong>flexible flow</strong> instead of a rigid calendar. Your quotes live next to your jobs. Your leads don't disappear into a spreadsheet. Contract signing happens in-app. And the whole thing runs from your phone — because that's where you run your business.
+              That's why we built StackDek around a <strong>flexible flow</strong> instead of a rigid calendar. Your quotes live next to your jobs. Your crew sees assigned work, tracks time, and submits expenses from the field. And the whole thing runs from your phone — because that's where you run your business.
             </p>
             <p className="font-semibold text-neutral-900 text-xl">
               One tool. One price. Everything you need to run your contracting business.
@@ -307,7 +307,7 @@ export default function Home() {
       <section id="pricing" className="bg-gradient-to-b from-neutral-50 to-white py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-5">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">Contractor CRM Pricing - No Per-Seat Fees</h2>
-          <p className="text-center text-neutral-600 mb-12 text-lg max-w-2xl mx-auto">One low price. All features included. No hidden costs. No per-seat fees.</p>
+          <p className="text-center text-neutral-600 mb-12 text-lg max-w-2xl mx-auto">Clear plans for solo contractors and small crews. No per-seat fees.</p>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
             {/* Basic */}
@@ -324,9 +324,9 @@ export default function Home() {
                 <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓</span> <span>Basic quotes & invoices</span></li>
                 <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓</span> <span>Lead tracking</span></li>
                 <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓</span> <span>Mobile-friendly interface</span></li>
-                <li className="flex items-start gap-2"><span className="text-neutral-300 font-bold">✗</span> <span className="text-neutral-400">Contract signing</span></li>
+                <li className="flex items-start gap-2"><span className="text-neutral-300 font-bold">✗</span> <span className="text-neutral-400">Team access</span></li>
                 <li className="flex items-start gap-2"><span className="text-neutral-300 font-bold">✗</span> <span className="text-neutral-400">Job costing</span></li>
-                <li className="flex items-start gap-2"><span className="text-neutral-300 font-bold">✗</span> <span className="text-neutral-400">Marketing automation</span></li>
+                <li className="flex items-start gap-2"><span className="text-neutral-300 font-bold">✗</span> <span className="text-neutral-400">Time & expense tracking</span></li>
               </ul>
               <a href="#signup" className="block text-center bg-neutral-200 hover:bg-neutral-300 text-neutral-900 font-semibold px-6 py-3 rounded-xl transition">
                 Start Free Trial
@@ -339,19 +339,19 @@ export default function Home() {
                 MOST POPULAR
               </div>
               <h3 className="text-2xl font-bold mb-2">Pro</h3>
-              <p className="text-orange-100 mb-6 text-sm">Everything to run your entire business</p>
+              <p className="text-orange-100 mb-6 text-sm">For small crews that need control of labor and profit</p>
               <div className="mb-6">
                 <span className="text-6xl font-bold">$69</span>
                 <span className="text-orange-100">/month</span>
               </div>
-              <p className="text-sm text-orange-100 mb-6 font-semibold">💰 Replaces $290/month in subscriptions</p>
+              <p className="text-sm text-orange-100 mb-6 font-semibold">Team operations included — no per-seat fees</p>
               <ul className="space-y-3 mb-8 text-sm">
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Multi-user access</strong> (no per-seat fees)</span></li>
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span>Digital job stack + flexible flow</span></li>
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span>Professional quotes & invoicing</span></li>
-                <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>In-app contract sending & e-signature</strong></span></li>
+                <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Secure job assignments & employee access</strong></span></li>
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Job costing & profit tracking</strong></span></li>
-                <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Marketing automation suite</strong></span></li>
+                <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Time tracking & expense approvals</strong></span></li>
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span>Mobile-optimized interface</span></li>
                 <li className="flex items-start gap-2"><span className="font-bold">✓</span> <span><strong>Priority support</strong></span></li>
               </ul>
@@ -384,31 +384,31 @@ export default function Home() {
 
           {/* Value Comparison */}
           <div className="bg-neutral-900 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">The Math is Simple</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">One System for the Work That Matters</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <p className="text-orange-400 font-bold mb-4 text-lg">What You're Paying Now:</p>
+                <p className="text-orange-400 font-bold mb-4 text-lg">Typical Small-Crew Stack:</p>
                 <ul className="space-y-3">
-                  <li className="flex justify-between"><span>Jobber or similar CRM</span><span className="font-bold">$180/mo</span></li>
-                  <li className="flex justify-between"><span>DocuSign for contracts</span><span className="font-bold">$60/mo</span></li>
-                  <li className="flex justify-between"><span>Marketing/email tools</span><span className="font-bold">$50/mo</span></li>
-                  <li className="flex justify-between border-t border-neutral-700 pt-3 text-xl"><span>Total</span><span className="font-bold text-red-400">$290/mo</span></li>
+                  <li className="flex justify-between"><span>CRM and quoting</span><span className="font-bold">Separate tool</span></li>
+                  <li className="flex justify-between"><span>Crew time tracking</span><span className="font-bold">Add-on</span></li>
+                  <li className="flex justify-between"><span>Expenses and job costing</span><span className="font-bold">Add-on</span></li>
+                  <li className="flex justify-between border-t border-neutral-700 pt-3 text-xl"><span>Result</span><span className="font-bold text-red-400">More logins & fees</span></li>
                 </ul>
               </div>
               <div>
                 <p className="text-green-400 font-bold mb-4 text-lg">With StackDek Pro:</p>
                 <ul className="space-y-3">
                   <li className="flex justify-between"><span>CRM + Job Stack</span><span className="font-bold">✓</span></li>
-                  <li className="flex justify-between"><span>Contract Signing</span><span className="font-bold">✓</span></li>
-                  <li className="flex justify-between"><span>Marketing Automation</span><span className="font-bold">✓</span></li>
+                  <li className="flex justify-between"><span>Team Assignments & Time</span><span className="font-bold">✓</span></li>
+                  <li className="flex justify-between"><span>Expense Approvals</span><span className="font-bold">✓</span></li>
                   <li className="flex justify-between"><span>+ Job Costing</span><span className="font-bold">✓</span></li>
                   <li className="flex justify-between border-t border-neutral-700 pt-3 text-xl"><span>Total</span><span className="font-bold text-green-400">$69/mo</span></li>
                 </ul>
               </div>
             </div>
             <div className="mt-8 text-center">
-              <p className="text-3xl font-bold text-green-400 mb-2">Save $2,652 Every Year</p>
-              <p className="text-neutral-400">That's real money back in your business.</p>
+              <p className="text-3xl font-bold text-green-400 mb-2">Know Where Every Job Stands</p>
+              <p className="text-neutral-400">One workflow from quote through crew costs and projected profit.</p>
             </div>
           </div>
         </div>
@@ -432,7 +432,7 @@ export default function Home() {
               But to do that, you need tools that actually work the way you work. Every CRM on the market was designed for corporate teams with office managers and strict schedules. None of them understood that contractors don't operate that way. Jobs shift. Weather happens. Priorities change hourly.
             </p>
             <p>
-              So we built something different: <strong className="text-white">a flexible stack instead of a rigid calendar</strong>. A tool that adapts to your day instead of forcing your day to adapt to it. And we bundled everything you actually need — <strong className="text-white">CRM, quotes, contracts, job costing, marketing</strong> — into one affordable package. Because paying $290/month for three separate subscriptions is insane.
+              So we built something different: <strong className="text-white">a flexible stack instead of a rigid calendar</strong>. A tool that adapts to your day instead of forcing your day to adapt to it. Pro connects the office and field with <strong className="text-white">secure assignments, time tracking, expenses, and job costing</strong> in one affordable package.
             </p>
             <p className="text-xl text-orange-400 font-semibold">
               Built by a contractor. Priced for contractors. Designed for the way you really work.
