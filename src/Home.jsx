@@ -15,7 +15,7 @@ const features = [
   },
   { 
     icon: '📝', 
-    title: 'Simple Quotes & Invoices', 
+    title: 'Simple Quotes & Invoices',
     desc: 'Build a professional quote in minutes and carry the details through the job and invoice.',
     detail: 'Branded quotes, reusable line items, deposits, invoicing, and text or email delivery.'
   },
@@ -33,7 +33,7 @@ const features = [
   },
   { 
     icon: '🎯', 
-    title: 'Team Operations', 
+    title: 'Team Operations',
     desc: 'Invite your crew, assign work, track time, and keep employees focused on only the jobs they need.',
     detail: 'Role-based access, secure invitations, job assignments, mobile clocking, expenses, and real labor costs.'
   },
